@@ -2,7 +2,7 @@
 session_start();
 define('CONST_BLOGTITLE', "PIETJE ZIJN BLOG");
 define('APPPATH', "/florisproject/");
-define('APP_FILEPATH', "/home/tim/florisproject/");
+define('APP_FILEPATH', "/var/www/html/florisproject/");
 function xss_clean($string){
 	return preg_replace('/<>/', '',  $string);
 }

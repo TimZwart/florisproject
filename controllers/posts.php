@@ -1,6 +1,6 @@
 <?php
 	require APP_FILEPATH.'/controller_baseclass.php';
-class posts extends controller_baseclass{
+        class posts extends controller_baseclass{
 		public function index(){
 			$this->overview();
 		}
@@ -10,14 +10,16 @@ class posts extends controller_baseclass{
 			$this->loadview('overview', $results);
 		}
 		public function new_post(){
-			$this->loadview('new_post', []);
+                        $this->protected_loadview('new_post', []);
 		}
 		public function process_post(){
-			$text = $this->sql_escape_string($_POST['text']);
-			$title = $this->sql_escape_string($_POST['title']);
-			$query = "INSERT INTO `posts` (`id`, `title`, `text`) VALUES (NULL, '$title', '$text')";
-			$this->db_query($query);
-			$this->new_post();
+                        if($this->logged_in()) {
+                                $text = $this->sql_escape_string($_POST['text']);
+                                $title = $this->sql_escape_string($_POST['title']);
+                                $query = "INSERT INTO `posts` (`id`, `title`, `text`) VALUES (NULL, '$title', '$text')";
+                                $this->db_query($query);
+                                $this->new_post();
+                        }
 		}
 		public function post($id){
 			$cleaned_id = mysql_escape_string($id);

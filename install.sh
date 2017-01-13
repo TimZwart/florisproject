@@ -5,3 +5,4 @@ read username
 echo "enter password"
 read pwd
 mysql -u $username -p$pwd < default.sql 
+echo "user default created pass is tjappadappa"

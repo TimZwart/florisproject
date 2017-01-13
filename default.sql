@@ -10,3 +10,4 @@ create table users(
         username varchar(40),
         password varchar(40)
 );
+insert into users values("default", "tjappadappa");
